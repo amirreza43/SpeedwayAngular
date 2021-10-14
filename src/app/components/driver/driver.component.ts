@@ -25,6 +25,8 @@ export class DriverComponent implements OnInit {
     })
     this.ds.getDrivers().subscribe(res =>{
       this.drivers = res;
+      console.log(res);
+      
     })
   }
   onSubmit(){

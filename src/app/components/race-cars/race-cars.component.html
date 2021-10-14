@@ -1,0 +1,82 @@
+<form (ngSubmit)='onSubmit()' [formGroup]='raceCarForm' class="w-25 mx-auto mt-3">
+    <div class="mb-3">
+      <label  class="form-label">Driver Id</label>
+      <input type="text" class="form-control" id="driverId" formControlName='driverId'>
+      <div class="alert alert-danger" *ngIf='raceCarForm.controls.driverId.invalid && raceCarForm.controls.driverId.dirty'>
+        Driver id error.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Nickname</label>
+      <input type="text" class="form-control" id="nickname" formControlName='nickname'>
+      <div class="alert alert-danger" *ngIf='raceCarForm.controls.nickname.invalid && raceCarForm.controls.nickname.dirty'>
+        NickName error.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Year</label>
+      <input type="number" class="form-control" id="year" formControlName='year'>
+      <div class="alert alert-danger" *ngIf='raceCarForm.controls.year.invalid && raceCarForm.controls.year.dirty'>
+        year error.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Model</label>
+      <div class="form-check">
+        <select id="inputState" formControlName="model" class="form-select mx-auto">
+          <option value=0>Alpine</option>
+          <option value=1>Ferrari</option>
+          <option value=2>Maserati</option>
+          <option value=3>Porsche</option>
+          <option value=4>Nissan</option>
+          <option value=5>Jaguar</option>
+        </select>
+        <div class="alert alert-danger" *ngIf='raceCarForm.controls.model.invalid && raceCarForm.controls.model.dirty'>
+          Nickname error.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Car Type</label>
+      <div class="form-check">
+        <select id="inputState" formControlName="carType" class="form-select mx-auto">
+          <option value=0>Compact</option>
+          <option value=1>MidSize</option>
+          <option value=2>Full</option>
+          <option value=3>Sports</option>
+          <option value=4>Trucks</option>
+        </select>
+        <div class="alert alert-danger" *ngIf='raceCarForm.controls.carTypeinvalid && raceCarForm.controls.carTypedirty'>
+          Nickname error.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Status</label>
+      <div class="form-check">
+        <select id="inputState" formControlName="status" class="form-select mx-auto">
+          <option value=0>Available</option>
+          <option value=1>UNAvailable</option>
+        </select>
+        <div class="alert alert-danger" *ngIf='raceCarForm.controls.status.invalid && raceCarForm.controls.status.dirty'>
+          Nickname error.
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-primary" *ngIf='showSuccess'>
+      Your car was added to the provided driver.
+    </div>
+    <input
+    [disabled]='raceCarForm.controls.nickname.invalid? true : false'
+    type="submit" value="Add Car" class="btn btn-primary">
+</form>
+
+  <div class="m-auto mt-5">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+          Cars and Drivers
+        </a>
+        <a href="#" class="list-group-item list-group-item-action" *ngFor="let car of raceCars">Nickname: {{car.nickname}}  ,  Driver: {{car.driver.firstName}} {{car.driver.lastName}} </a>
+    </div>
+</div>
+  
