@@ -8,7 +8,7 @@ import { RacesComponent } from './components/races/races.component';
 const routes = [
   { path: 'drivers', component: DriverComponent },
   { path: 'Cars', component: RaceCarsComponent },
-  { path: 'races', component: RacesComponent }
+  { path: 'Races', component: RacesComponent }
 ]
 
 

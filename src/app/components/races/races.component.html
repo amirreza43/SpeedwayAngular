@@ -1,1 +1,50 @@
-<p>races works!</p>
+<form (ngSubmit)='onSubmit()' [formGroup]='raceForm' class="w-25 mx-auto mt-3">
+    <div class="mb-3">
+      <label  class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" formControlName='name'>
+      <div class="alert alert-danger" *ngIf='raceForm.controls.name.invalid && raceForm.controls.name.dirty'>
+        Name error.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Date</label>
+      <input type="date" class="form-control" id="date" formControlName='date'>
+      <div class="alert alert-danger" *ngIf='raceForm.controls.date.invalid && raceForm.controls.date.dirty'>
+        Date error.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Category</label>
+      <div class="form-check">
+        <select id="inputState" formControlName="category" class="form-select mx-auto">
+          <option value=0>Open Wheel</option>
+          <option value=1>Tour</option>
+          <option value=2>Sport Car</option>
+          <option value=3>Rally</option>
+          <option value=4>Time Attak</option>
+          <option value=5>Drag</option>
+          <option value=6>Off-Road</option>
+          <option value=7>Stock Car</option>
+        </select>
+        <div class="alert alert-danger" *ngIf='raceForm.controls.category.invalid && raceForm.controls.category.dirty'>
+          Category error.
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-primary" *ngIf='showSuccess'>
+      Your race was added.
+    </div>
+    <input
+    [disabled]='raceForm.controls.name.invalid? true : false'
+    type="submit" value="Add Race" class="btn btn-primary">
+</form>
+
+  <div class="m-auto mt-5">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+          Races
+        </a>
+        <a href="#" class="list-group-item list-group-item-action" *ngFor="let race of races">Name: {{race.name}}  ,  date: {{race.date |date: 'dd/MM/yyyy'}}  ,  Category: {{race.raceCategory}}</a>
+    </div>
+</div>
+  
