@@ -1,0 +1,46 @@
+<form (ngSubmit)='onSubmit()' [formGroup]='driverForm' class="w-25 mx-auto mt-3">
+    <div class="mb-3">
+      <label  class="form-label">First Name</label>
+      <input type="text" class="form-control" id="firstName" formControlName='firstName'>
+      <div class="alert alert-danger" *ngIf='driverForm.controls.firstName.invalid && driverForm.controls.firstName.dirty'>
+        First Name error.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="lastName" formControlName='lastName'>
+      <div class="alert alert-danger" *ngIf='driverForm.controls.lastName.invalid && driverForm.controls.lastName.dirty'>
+        Last Name error.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Nickname</label>
+      <input type="text" class="form-control" id="nickname" formControlName='nickname'>
+      <div class="alert alert-danger" *ngIf='driverForm.controls.nickname.invalid && driverForm.controls.nickname.dirty'>
+        Nickname error.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Age</label>
+      <input type="number" class="form-control" id="age" formControlName='age'>
+      <div class="alert alert-danger" *ngIf='driverForm.controls.age.invalid && driverForm.controls.age.dirty'>
+        Age error.
+      </div>
+    </div>
+    <div class="alert alert-primary" *ngIf='showSuccess'>
+      Your driver was added.
+    </div>
+    <input
+    [disabled]='driverForm.controls.firstName.invalid || driverForm.controls.lastName.invalid? true : false'
+    type="submit" value="Add Driver" class="btn btn-primary">
+  </form>
+
+  <div class="m-auto mt-5">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+          Drivers
+        </a>
+        <a href="#" class="list-group-item list-group-item-action" *ngFor="let driver of drivers">FirstName: {{driver.firstName}}  ,  LastName: {{driver.lastName}}  ,  Nickname: {{driver.Nickname}} ,  Age: {{driver.age}}</a>
+    </div>
+</div>
+  
